@@ -425,8 +425,18 @@ class Note extends FlxSprite
 			attemptToAddAnimationByPrefix('purpleholdend', 'pruple end hold', 24, true); // this fixes some retarded typo from the original note .FLA
 			animation.addByPrefix(noteAnim + 'holdend', noteAnim + ' hold end', 24, true);
 			animation.addByPrefix(noteAnim + 'hold', noteAnim + ' hold piece', 24, true);
+			animation.addByPrefix('kill', 'kill');
+			animation.addByPrefix('live', 'live');
 		}
 		else animation.addByPrefix(noteAnim + 'Scroll', noteAnim + '0');
+
+		switch (t)
+		{
+			case 1:
+				animation.play('kill');
+			case 2:
+				animation.play('live');
+		}
 
 		setGraphicSize(width * ExtraKeysHandler.instance.data.scales[mania]);
 		//trace(width, ExtraKeysHandler.instance.data.scales[mania]);
